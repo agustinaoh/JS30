@@ -57,27 +57,33 @@
   <audio data-key="75" src="sounds/tom.wav"></audio>
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
-<script>
-  
-  
-  const keys = document.querySelectorAll('.key');
-  const key = document.querySelector('.key[data-key="72"]');
-  
-  console.log(keys);
-  
+<script>  
   /* make the event listener for the key down */
-  /* play the sound when the event happens */
   document.addEventListener('keydown', (e) => {
     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+    if (!audio) return;
     
+    /* play the sound when the event happens */
     audio.currentTime = 0;
     audio.play();
+    
+    /* add the PLAYING class to the div */
+    key.classList.add('playing');
   });
-
-  /* add the PLAYING class to the div */
+  
   /* remove the PLAYING class when transition ends */
 
-  
+  function removeTransition(e) {
+    if (e.propertyName !== 'transform') return;
+    e.target.classList.remove('playing');
+  }
+
+  const keys = document.querySelectorAll('.key');
+  keys.forEach (key => key.addEventListener('transitionend', removeTransition));
+
+
+
 </script>
 
 
