@@ -8,10 +8,18 @@
 
 
     <div class="clock">
+      <div class="clock-shadow"></div>
       <div class="clock-face">
-        <div class="hand hour-hand"></div>
-        <div class="hand min-hand"></div>
-        <div class="hand second-hand"></div>
+        <div class="mark mark-y"></div>
+        <div class="mark mark-x right"></div>
+        <div class="mark mark-y bottom"></div>
+        <div class="mark mark-x left"></div>
+
+
+        <div class="hand hour-hand hand-shadow"></div>
+        <div class="hand min-hand hand-shadow"></div>
+        <div class="center hand-shadow"></div>
+        <div class="hand second-hand hand-shadow"></div>
       </div>
     </div>
 
@@ -37,23 +45,85 @@
     .clock {
       width: 30rem;
       height: 30rem;
-      border: 20px solid white;
+      /* border: 20px solid white; */
       border-radius: 50%;
       margin: 50px auto;
       position: relative;
       padding: 2rem;
-      /* box-shadow:
-        0 0 0 4px rgba(0,0,0,0.1),
-        inset 0 0 0 3px #EFEFEF,
-        inset 0 0 10px black,
-        0 0 10px rgba(0,0,0,0.2); */
+      box-shadow: 0 0 12px 4px rgba(0,0,0,0.2);
+    }
+    
+    .clock-shadow {
+      /* height: 200px;
+      width: 200px; */
+      height: 100%;
+      width: 100%;
+      height: 200px;
+      width: 100%;
+      position: absolute;
+      left: 70px;
+      top: 140px;
+      /* position: absolute;
+      left: 60px;
+      top: 60px; */
+      transform: rotate(135deg);
+      background: linear-gradient(transparent, rgb(0 0 0 / 10%)) ;
+    }
+
+    .hand-shadow {
+      box-shadow: 0 0 5px 2px rgb(0 0 0 / 15%);
     }
 
     .clock-face {
       position: relative;
       width: 100%;
       height: 100%;
-      transform: translateY(-3px); /* account for the height of the clock hands */
+      /* transform: translateY(-3px); // account for the height of the clock hands */
+      background: #ffffff36;
+      border-radius: 50%;
+      box-shadow: 0px 0px 0px 11px #ffffff36;
+    }
+    
+    .center {
+      position: absolute;
+      width: 6%;
+      height: 6%;
+      border-radius: 50%;
+      background-color: white;
+      top: 47%; /* -4%, half of size*/
+      right: 47%;
+    }
+
+    .mark {
+      position: absolute;
+      background: #f6f6f6;
+    }
+
+    .mark-y {
+      width: 3px;
+      height: 8px;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+    }
+
+    .mark-x {
+      width: 8px;
+      height: 3px;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+    }
+
+    .right {
+      right: 0;
+    }
+    .bottom {
+      bottom: 0;
+    }
+
+    .left {
+      left: 0;
     }
 
     .hand {
@@ -68,9 +138,23 @@
       transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
     }
 
-    /* .hour-hand { width: 30%; } */
+    .hour-hand {
+      height: 9px;
+      width: 32%;
+      position: absolute;
+      right: 50%;
+    }
 
-    .min-hand { width: 40%; }
+    .min-hand {
+      width: 40%;
+      position: absolute;
+      right: 50%;
+    }
+
+    .second-hand {
+      background-color: red;
+      height: 2px;
+    }
 
   </style>
 
