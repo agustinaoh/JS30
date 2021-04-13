@@ -18,7 +18,7 @@
 
   <style>
     html {
-      background: #018DED url(https://unsplash.it/1500/1000?image=881&blur=5);
+      background: #018DED url(https://res.cloudinary.com/dsz5gd9a3/image/upload/v1618303199/JS30/pexels-sindre-str%C3%B8m-1144176_jiviof.jpg);
       background-size: cover;
       font-family: 'helvetica neue';
       text-align: center;
@@ -42,11 +42,11 @@
       margin: 50px auto;
       position: relative;
       padding: 2rem;
-      box-shadow:
+      /* box-shadow:
         0 0 0 4px rgba(0,0,0,0.1),
         inset 0 0 0 3px #EFEFEF,
         inset 0 0 10px black,
-        0 0 10px rgba(0,0,0,0.2);
+        0 0 10px rgba(0,0,0,0.2); */
     }
 
     .clock-face {
@@ -59,15 +59,47 @@
     .hand {
       width: 50%;
       height: 6px;
-      background: black;
+      background: white;
       position: absolute;
       top: 50%;
+      transform-origin: 100%;
+      transform: rotate(90deg);
+      transition: all 0.05s;
+      transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
     }
+
+    /* .hour-hand { width: 30%; } */
+
+    .min-hand { width: 40%; }
 
   </style>
 
   <script>
 
+    // get the current time
+    // update it permanentely
+    // select the hands
+    // transform them, calculating the degrees per second, minute, hour
+    // for every second: 6deg SECONDS, 6 deg MINUTES(per minute) 0.5deg HOUR(per minute)
+
+    const hourHand = document.querySelector('.hour-hand');
+    const minHand = document.querySelector('.min-hand');
+    const secondHand = document.querySelector('.second-hand')
+
+    function getTime() {
+      const date = new Date();
+      
+      const hours = date.getHours();
+      const minutes = date.getMinutes();
+      const seconds = date.getSeconds();
+      // console.log(hours, minutes, seconds);
+      
+      hourHand.style.transform = `rotate(${(hours * 30 +90)}deg)`;
+      minHand.style.transform = `rotate(${(minutes * 6 +90)}deg)`;
+      secondHand.style.transform = `rotate(${(seconds * 6 +90)}deg)`;
+    }
+
+    setInterval(getTime, 1000);
 
   </script>
 </body>
