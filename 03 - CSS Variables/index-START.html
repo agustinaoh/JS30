@@ -22,7 +22,13 @@
     <input id="grayscale" type="range" name="grayscale" min="0" max="100" value="0" data-sizing="%">
 
     <label for="brightness">Brightness:</label>
-    <input id="brightness" type="range" name="brightness" min="0" max="100" value="100" data-sizing="%">
+    <input id="brightness" type="range" name="brightness" min="0" max="200" value="100" data-sizing="%">
+
+    <label for="contrast">Contrast:</label>
+    <input id="contrast" type="range" name="contrast" min="0" max="200" value="100" data-sizing="%">
+
+    <label for="hue-rotate">hue-rotate:</label>
+    <input id="hue-rotate" type="range" name="hue-rotate" min="0" max="360" value="0" data-sizing="deg">
     
   </div>
 
@@ -35,6 +41,8 @@
       --blur: 0px;
       --grayscale: 0%;
       --brightness: 100%;
+      --contrast: 100%;
+      --hue-rotate: 0deg;
     }
 
     body {
@@ -61,7 +69,8 @@
     img {
       padding: var(--spacing);
       background: var(--color);
-      filter: blur(var(--blur)) grayscale(var(--grayscale)) brightness(var(--brightness));
+      filter: blur(var(--blur)) grayscale(var(--grayscale)) brightness(var(--brightness))
+              contrast(var(--contrast)) hue-rotate(var(--hue-rotate));
     }
 
   </style>
