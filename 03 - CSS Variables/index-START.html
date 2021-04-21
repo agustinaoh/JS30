@@ -8,20 +8,21 @@
   <h2>Update CSS Variables with <span class='hl'>JS</span></h2>
 
   <div class="controls">
-    <label for="spacing">Spacing:</label>
-    <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
-
-    <label for="blur">Blur:</label>
-    <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
-
-    <label for="grayscale">Grayscale:</label>
-    <input id="grayscale" type="range" name="grayscale" min="0" max="100" value="10" data-sizing="%">
-
-    <label for="brightness">Brightness:</label>
-    <input id="brightness" type="range" name="brightness" min="0" max="100" value="10" data-sizing="%">
 
     <label for="color">Base Color</label>
-    <input id="color" type="color" name="color" value="#ffc600">
+    <input id="color" type="color" name="color" value="#f112ae">
+
+    <label for="spacing">Spacing:</label>
+    <input id="spacing" type="range" name="spacing" min="0" max="200" value="0" data-sizing="px">
+
+    <label for="blur">Blur:</label>
+    <input id="blur" type="range" name="blur" min="0" max="100" value="0" data-sizing="px">
+
+    <label for="grayscale">Grayscale:</label>
+    <input id="grayscale" type="range" name="grayscale" min="0" max="100" value="0" data-sizing="%">
+
+    <label for="brightness">Brightness:</label>
+    <input id="brightness" type="range" name="brightness" min="0" max="100" value="100" data-sizing="%">
     
   </div>
 
@@ -29,11 +30,11 @@
 
   <style>
     :root{
-      --color: #16cde6;
-      --spacing: 10px;
-      --blur: 10px;
-      --grayscale: 10%;
-      --brightness: 40%;
+      --color: #f112ae;
+      --spacing: 0px;
+      --blur: 0px;
+      --grayscale: 0%;
+      --brightness: 100%;
     }
 
     body {
