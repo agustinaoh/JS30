@@ -26,6 +26,7 @@
     .panels {
       min-height: 100vh;
       overflow: hidden;
+      display: flex;
     }
 
     .panel {
@@ -43,6 +44,10 @@
       font-size: 20px;
       background-size: cover;
       background-position: center;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
     }
 
     .panel1 { background-image:url(https://source.unsplash.com/gYl-UtwNg_I/1500x1500); }
@@ -69,8 +74,18 @@
       font-size: 4em;
     }
 
+    .panel p:first-child {
+      transform: translateY(-160px);
+    }
+    .panel p:last-child { transform: translateY(160px); }
+
+    .panel.open-active > p:first-child { transform: translateY(0); }
+    .panel.open-active > p:last-child { transform: translateY(0); }
+
     .panel.open {
       font-size: 40px;
+      /* width: 100%; */
+      flex-grow: 8;
     }
 
   </style>
@@ -105,6 +120,15 @@
   </div>
 
   <script>
+
+  const panels = document.querySelectorAll('.panel')
+  
+  function classToggle() {
+    // console.log(panel);
+    this.classList.toggle('open');
+  }
+
+  panels.forEach(panel => panel.addEventListener('click', classToggle()));
 
   </script>
 
