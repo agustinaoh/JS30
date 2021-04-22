@@ -75,9 +75,9 @@
     }
 
     .panel p:first-child {
-      transform: translateY(-160px);
+      transform: translateY(-180px);
     }
-    .panel p:last-child { transform: translateY(160px); }
+    .panel p:last-child { transform: translateY(180px); }
 
     .panel.open-active > p:first-child { transform: translateY(0); }
     .panel.open-active > p:last-child { transform: translateY(0); }
@@ -123,13 +123,18 @@
 
   const panels = document.querySelectorAll('.panel')
   
-  function classToggle() {
+  function openToggle() {
     this.classList.toggle('open');
-    this.classList.toggle('open-active');
-
   }
 
-  panels.forEach(panel => panel.addEventListener('click', classToggle));
+  function activeToggle(e) {
+    if (e.propertyName.includes('size')) {
+      this.classList.toggle('open-active');
+    }
+  }
+
+  panels.forEach(panel => panel.addEventListener('click', openToggle));
+  panels.forEach(panel => panel.addEventListener('transitionend', activeToggle))
 
   </script>
 
