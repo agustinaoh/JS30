@@ -124,11 +124,12 @@
   const panels = document.querySelectorAll('.panel')
   
   function classToggle() {
-    // console.log(panel);
     this.classList.toggle('open');
+    this.classList.toggle('open-active');
+
   }
 
-  panels.forEach(panel => panel.addEventListener('click', classToggle()));
+  panels.forEach(panel => panel.addEventListener('click', classToggle));
 
   </script>
 
