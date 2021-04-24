@@ -10,8 +10,6 @@
   <form class="search-form">
     <input type="text" class="search" placeholder="City or State">
     <ul class="suggestions">
-      <li>Filter for a city</li>
-      <li>or a state</li>
     </ul>
   </form>
 <script>
@@ -24,7 +22,6 @@ fetch(endpoint)
     .then(data => cities.push(...data)); /* ... to 'spread' the result and avoid an array inside an array*/
 
 function findMatches(wordToMatch, cities) {
-
   return cities.filter(place => {
     const regex = new RegExp(wordToMatch, 'gi');
 
@@ -35,21 +32,36 @@ function findMatches(wordToMatch, cities) {
 const input = document.querySelector('input');
 const suggestions = document.querySelector('.suggestions');
 
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
 
 function displayMatches(){
   const matchArray = findMatches(input.value, cities);
-  // console.log(input.value);
+  
+  // matchArray.forEach(match => {
+  //   const content = `${match.city}, ${match.state}, ${match.population}`;
+  //   suggestions.insertAdjacentHTML("beforeend",` <li>${content}</li>`);
+  // });
+
+  const html = matchArray.map(place => {
+    const regex = new RegExp(this.value, 'gi');
+    const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
+    const stateName = place.state.replace(regex, `<span class="hl">${this.value}</span>`);
+    return `
+      <li>
+        <span class="name">${cityName}, ${stateName}</span>
+        <span class="population">${numberWithCommas(place.population)}</span>
+      </li>
+    `;
+  }).join('');
+  suggestions.innerHTML = html;
 };
-
-// function content(findMatches) {
-//   cities.forEach(place => `${place.city}, ${place.state}, ${place.population}`)
-// }
-
 
 input.addEventListener('change', displayMatches);
 input.addEventListener('keyup', displayMatches);
 
-// suggestions.insertAdjacentHTML("beforeend",` <li>${content}</li>`);
+// 
 
 </script>
 </body>
