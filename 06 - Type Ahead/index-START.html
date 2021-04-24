@@ -23,6 +23,34 @@ fetch(endpoint)
     .then(res => res.json())
     .then(data => cities.push(...data)); /* ... to 'spread' the result and avoid an array inside an array*/
 
+function findMatches(wordToMatch, cities) {
+
+  return cities.filter(place => {
+    const regex = new RegExp(wordToMatch, 'gi');
+
+    return place.city.match(regex) || place.state.match(regex);
+  })
+};
+
+const input = document.querySelector('input');
+const suggestions = document.querySelector('.suggestions');
+
+
+function displayMatches(){
+  const matchArray = findMatches(input.value, cities);
+  // console.log(input.value);
+};
+
+// function content(findMatches) {
+//   cities.forEach(place => `${place.city}, ${place.state}, ${place.population}`)
+// }
+
+
+input.addEventListener('change', displayMatches);
+input.addEventListener('keyup', displayMatches);
+
+// suggestions.insertAdjacentHTML("beforeend",` <li>${content}</li>`);
+
 </script>
 </body>
 </html>
