@@ -32,7 +32,9 @@ function skip() {
 
 function progressBarUpdate(){
   const percentage = Math.floor(video.currentTime / video.duration * 100 ) + "%";
-  filledBar.style.setProperty('flex-basis', percentage);
+  // filledBar.style.setProperty('flex-basis', percentage);
+  filledBar.style.flexBasis = percentage;
+
 };
 
 
@@ -42,7 +44,7 @@ playToggle.addEventListener('click', togglePlay);
 video.addEventListener('click', togglePlay);
 video.addEventListener('play', changeIcon);
 video.addEventListener('pause', changeIcon);
-video.addEventListener('change', progressBarUpdate);
+video.addEventListener('timeupdate', progressBarUpdate);
 
 
 ranges.forEach(selector => {
