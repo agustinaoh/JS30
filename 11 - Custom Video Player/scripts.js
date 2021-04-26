@@ -37,6 +37,12 @@ function progressBarUpdate(){
 
 };
 
+function scrub(e){
+  const timePosition = (e.offsetX / progressBar.offsetWidth * video.duration);
+  // console.log(timePosition);
+
+  video.currentTime = timePosition;
+}
 
 // Add the event listeners
 
@@ -45,6 +51,8 @@ video.addEventListener('click', togglePlay);
 video.addEventListener('play', changeIcon);
 video.addEventListener('pause', changeIcon);
 video.addEventListener('timeupdate', progressBarUpdate);
+
+progressBar.addEventListener('click', scrub);
 
 
 ranges.forEach(selector => {
