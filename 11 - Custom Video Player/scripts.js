@@ -20,6 +20,10 @@ function changeIcon() {
   video.paused ? playToggle.innerText= "►" : playToggle.innerText= "❚❚";
 }
 
+function speedUpdate() {
+  console.log(video.playbackRate)
+  video.playbackRate = ranges[1].value;
+}
 
 function advance() { console.log(video.currentTime) };
 
@@ -30,6 +34,13 @@ video.addEventListener('click', togglePlay);
 video.addEventListener('play', changeIcon);
 video.addEventListener('pause', changeIcon);
 
+ranges.forEach(selector => {
+  selector.addEventListener('change', speedUpdate);
+});
+
+ranges.forEach(selector => {
+  selector.addEventListener('mousemove', speedUpdate);
+});
 
 // player.addEventListener('keyup', togglePlay => {
 //   if (e.code == "Space") {
