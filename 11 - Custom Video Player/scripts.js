@@ -21,14 +21,20 @@ function changeIcon() {
 }
 
 function speedUpdate() {
-  console.log(video.playbackRate, this.name, this.value);
+  // console.log(video.playbackRate, this.name, this.value);
   video[this.name] = this.value;
 }
 
 function skip() {
-  console.log(video.currentTime, this.dataset.skip);
+  // console.log(video.currentTime, this.dataset.skip);
   video.currentTime += parseInt(this.dataset.skip);
 };
+
+function progressBarUpdate(){
+  const percentage = Math.floor(video.currentTime / video.duration * 100 ) + "%";
+  filledBar.style.setProperty('flex-basis', percentage);
+};
+
 
 // Add the event listeners
 
@@ -36,6 +42,8 @@ playToggle.addEventListener('click', togglePlay);
 video.addEventListener('click', togglePlay);
 video.addEventListener('play', changeIcon);
 video.addEventListener('pause', changeIcon);
+video.addEventListener('change', progressBarUpdate);
+
 
 ranges.forEach(selector => {
   selector.addEventListener('change', speedUpdate);
