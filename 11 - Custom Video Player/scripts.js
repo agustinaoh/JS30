@@ -16,12 +16,20 @@ function togglePlay() {
   (video.paused) ? video.play() : video.pause();
 };
 
+function changeIcon() {
+  video.paused ? playToggle.innerText= "►" : playToggle.innerText= "❚❚";
+}
+
 
 function advance() { console.log(video.currentTime) };
 
 // Add the event listeners
 
 playToggle.addEventListener('click', togglePlay);
+video.addEventListener('click', togglePlay);
+video.addEventListener('play', changeIcon);
+video.addEventListener('pause', changeIcon);
+
 
 // player.addEventListener('keyup', togglePlay => {
 //   if (e.code == "Space") {
