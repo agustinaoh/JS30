@@ -52,7 +52,11 @@ video.addEventListener('play', changeIcon);
 video.addEventListener('pause', changeIcon);
 video.addEventListener('timeupdate', progressBarUpdate);
 
+let mousedown = false;
 progressBar.addEventListener('click', scrub);
+progressBar.addEventListener('mousemove', (e) => mousedown && scrub(e));
+progressBar.addEventListener('mousedown', () => mousedown = true);
+progressBar.addEventListener('mouseup', () => mousedown = false);
 
 
 ranges.forEach(selector => {
