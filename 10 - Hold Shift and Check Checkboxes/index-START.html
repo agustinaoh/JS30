@@ -100,16 +100,17 @@
   // const items = document.querySelectorAll('.item');
 
 
-  let firstClicked = e.target;
-  let lastClicked = e.target;
+  let firstClicked;
+  let lastClicked;
 
   function handleCheck(e) {
-    const shift = e.shiftKey;
     // console.log(e.target);
 
-    if (shift) {
-      console.dir(firstClicked);
+    // lastClicked = this;
+    if (e.shiftKey && this.checked) {
+      console.log(this);
     };
+
   };
 
   checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
