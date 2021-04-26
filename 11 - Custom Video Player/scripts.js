@@ -13,14 +13,18 @@ const ranges = player.querySelectorAll('.player__slider');
 // Build the functions
 
 function togglePlay() {
-  if (video.paused) {
-    video.play()
-  } else {
-    video.pause();
-  };
-}
+  (video.paused) ? video.play() : video.pause();
+};
 
 
 function advance() { console.log(video.currentTime) };
 
 // Add the event listeners
+
+playToggle.addEventListener('click', togglePlay);
+
+// player.addEventListener('keyup', togglePlay => {
+//   if (e.code == "Space") {
+//     togglePlay();
+//   }
+// });
