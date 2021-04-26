@@ -12,8 +12,15 @@ const ranges = player.querySelectorAll('.player__slider');
 
 // Build the functions
 
-function play() { video.play() };
-function pause() { video.pause() };
+function togglePlay() {
+  if (video.paused) {
+    video.play()
+  } else {
+    video.pause();
+  };
+}
+
+
 function advance() { console.log(video.currentTime) };
 
 // Add the event listeners
