@@ -96,13 +96,23 @@
   </div>
 
 <script>
+  const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
+  // const items = document.querySelectorAll('.item');
 
-  const items = document.querySelectorAll('.item');
 
-  items.forEach(item => item.addEventListener('click', (e) => {
+  let firstClicked = e.target;
+  let lastClicked = e.target;
+
+  function handleCheck(e) {
     const shift = e.shiftKey;
-    console.log(shift);
-  }));
+    // console.log(e.target);
+
+    if (shift) {
+      console.dir(firstClicked);
+    };
+  };
+
+  checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
 
 </script>
 </body>
