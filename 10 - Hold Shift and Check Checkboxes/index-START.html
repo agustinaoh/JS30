@@ -106,11 +106,21 @@
   function handleCheck(e) {
     // console.log(e.target);
 
-    // lastClicked = this;
-    if (e.shiftKey && this.checked) {
-      console.log(this);
-    };
+    let inBetween = false;
 
+    if (e.shiftKey && this.checked) {
+      checkboxes.forEach(checkbox => {
+        console.log(checkbox);
+        if (checkbox === this || checkbox === lastClicked) {
+          inBetween = !inBetween;
+          console.log('FUCKIT');
+        }
+        if (inBetween) { checkbox.checked = true };
+      })
+    };
+    
+
+    lastClicked = this;
   };
 
   checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
