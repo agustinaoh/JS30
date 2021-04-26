@@ -25,7 +25,10 @@ function speedUpdate() {
   video.playbackRate = ranges[1].value;
 }
 
-function advance() { console.log(video.currentTime) };
+function skip() {
+  console.log(video.currentTime, this.dataset.skip);
+  video.currentTime += parseInt(this.dataset.skip);
+};
 
 // Add the event listeners
 
@@ -40,6 +43,10 @@ ranges.forEach(selector => {
 
 ranges.forEach(selector => {
   selector.addEventListener('mousemove', speedUpdate);
+});
+
+skipButtons.forEach(button => {
+  button.addEventListener('click', skip)
 });
 
 // player.addEventListener('keyup', togglePlay => {
