@@ -21,8 +21,8 @@ function changeIcon() {
 }
 
 function speedUpdate() {
-  console.log(video.playbackRate)
-  video.playbackRate = ranges[1].value;
+  console.log(video.playbackRate, this.name, this.value);
+  video[this.name] = this.value;
 }
 
 function skip() {
@@ -48,6 +48,7 @@ ranges.forEach(selector => {
 skipButtons.forEach(button => {
   button.addEventListener('click', skip)
 });
+
 
 // player.addEventListener('keyup', togglePlay => {
 //   if (e.code == "Space") {
