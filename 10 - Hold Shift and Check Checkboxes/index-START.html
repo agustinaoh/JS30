@@ -96,6 +96,14 @@
   </div>
 
 <script>
+
+  const items = document.querySelectorAll('.item');
+
+  items.forEach(item => item.addEventListener('click', (e) => {
+    const shift = e.shiftKey;
+    console.log(shift);
+  }));
+
 </script>
 </body>
 </html>
