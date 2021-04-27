@@ -51,7 +51,7 @@
 
     // functions
 
-    function debounce(func, wait = 100, immediate = true) {
+    function debounce(func, wait = 20, immediate = true) {
       var timeout;
       return function() {
         var context = this, args = arguments;
@@ -72,12 +72,20 @@
       images.forEach(image => {
 
         // half way of the image:
-        const startSlide = (window.scrollY + window.innerHeight) - image.height / 2;
+        const startSlide = (window.scrollY + window.innerHeight) - image.height / 3;
         
         // offset top: pixels from top of html file till top of the image
         const imageBottom = image.offsetTop + image.height;
-        
-        console.log(imageBottom);
+
+        // the image should be shown when scrolling reaches the half way
+        // through the image, and it's 'bigger' than the top position
+        const halfShown = startSlide > image.offsetTop ;
+
+        //we're still watching the image. we didn't scroll pass the bottom of the image
+        const notScrolledOut = imageBottom > window.scrollY;
+
+        (halfShown && notScrolledOut) ? image.classList.add('active') : image.classList.remove('active')
+  
       });
     };
     
