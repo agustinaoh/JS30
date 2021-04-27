@@ -43,6 +43,14 @@
   </div>
 
   <script>
+
+    // selectors
+
+    const images = document.querySelectorAll('.slide-in');
+
+
+    // functions
+
     function debounce(func, wait = 100, immediate = true) {
       var timeout;
       return function() {
@@ -58,13 +66,27 @@
       };
     }
 
-    const images = document.querySelectorAll('.slide-in');
+    function checkSlide(e) {
+      // console.log(window.scrollY + window.innerHeight);
 
-    function print(e) {
-      console.log(e);
+      images.forEach(image => {
+
+        // half way of the image:
+        const startSlide = (window.scrollY + window.innerHeight) - image.height / 2;
+        
+        // offset top: pixels from top of html file till top of the image
+        const imageBottom = image.offsetTop + image.height;
+        
+        console.log(imageBottom);
+      });
     };
+    
+    
+    // event listeners
 
-    window.addEventListener('scroll', debounce(print));
+    window.addEventListener('scroll', debounce(checkSlide));
+
+
 
   </script>
 
