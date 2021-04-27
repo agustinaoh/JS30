@@ -7,6 +7,23 @@
 </head>
 <body>
 <script>
+
+  const sequence = [];
+  const expected = "cavita";
+
+  window.addEventListener('keyup', (e) => {
+    // console.log(e.key);
+    sequence.push(e.key);
+    sequence.splice(-expected.length - 1, sequence.length - expected.length)
+
+    // console.log(sequence);
+    
+    if (sequence.join('') === expected) {
+      console.log('MAGIC!');
+      cornify_add();
+    };
+  });
+
 </script>
 </body>
 </html>
